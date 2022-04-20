@@ -52,6 +52,7 @@ public class MySql {
     public boolean update(String name, String pass, Double modify) throws SQLException {
         return false;
     }
+
 }
 
 
