@@ -26,13 +26,16 @@ CREATE TABLE `bill` (
   `idbill` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
   `Electricity_old` double DEFAULT NULL,
   `Electricity_new` double DEFAULT NULL,
   `Gas_old` double DEFAULT NULL,
   `Gas_new` double DEFAULT NULL,
   `network` double DEFAULT NULL,
-  PRIMARY KEY (`idbill`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`idbill`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `user_name_UNIQUE` (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +44,6 @@ CREATE TABLE `bill` (
 
 LOCK TABLES `bill` WRITE;
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-INSERT INTO `bill` VALUES (1,'ionel','Cristiana!',2.3,2.5,3.6,3.6,28.9);
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-18 18:58:59
+-- Dump completed on 2022-04-20 18:21:29
