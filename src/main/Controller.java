@@ -24,7 +24,7 @@ public class Controller {
     PasswordField passwordMain;
 
     @FXML
-    private void createUser(ActionEvent actionEvent) throws IOException {
+    private void createUserFrame(ActionEvent actionEvent) throws IOException {
         Parent parent= FXMLLoader.load(getClass().getClassLoader().getResource("resources/createFrame.fxml"));
         Scene scene= new Scene(parent);
         Stage stage=(Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -58,6 +58,19 @@ private  void logIn(ActionEvent actionEvent) throws SQLException, IOException {
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please verify you username and password!");
             alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
+}
+
+@FXML
+    private void create() {
+        try{
+            mySql.insert(usernameTF.getText(),passwordTF.getText(),emailTF.getText());
+        }catch (SQLException e){
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please verify your data!");
             alert.showAndWait();
         }
 

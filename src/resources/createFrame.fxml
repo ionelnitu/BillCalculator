@@ -14,7 +14,7 @@
       <TextField fx:id="usernameTF" layoutX="15.0" layoutY="83.0" />
       <Label layoutX="14.0" layoutY="116.0" text="Password" />
       <TextField fx:id="passwordTF" layoutX="16.0" layoutY="134.0" />
-      <Button fx:id="createBT" layoutX="17.0" layoutY="187.0" mnemonicParsing="false" text="Create" />
+      <Button fx:id="createBT" layoutX="17.0" layoutY="187.0" mnemonicParsing="false" text="Create" onAction="#create"/>
       <Button fx:id="cancelBT" layoutX="112.0" layoutY="187.0" mnemonicParsing="false" text="Cancel" onAction="#backToHome"/>
    </children>
 </AnchorPane>

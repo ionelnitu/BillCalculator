@@ -23,15 +23,11 @@ public class MySql {
     }
 
     //insert into database the user
-    public boolean insert(String name, String pass, Double elecOld, Double elecNew, Double gasOld, Double gasNew, Double net) throws SQLException {
-        PreparedStatement st = conn.prepareStatement("insert into bill (user_name,password,electricity_old,electricity_new,gas_old,gas_new,network) values(?,?,?,?,?,?,?)");
+    public boolean insert(String name, String pass,String email) throws SQLException {
+        PreparedStatement st = conn.prepareStatement("insert into bill (user_name,password,email) values(?,?,?)");
         st.setString(1, name);
         st.setString(2, pass);
-        st.setDouble(3, elecOld);
-        st.setDouble(4, elecNew);
-        st.setDouble(5, gasOld);
-        st.setDouble(6, gasOld);
-        st.setDouble(7, net);
+        st.setString(3,email);
         return st.execute();
     }
 
