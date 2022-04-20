@@ -1,6 +1,8 @@
 package main;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainClass extends Application {
@@ -10,9 +12,8 @@ public class MainClass extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        MySql mySql=new MySql();
-        Person person=new Person();
-        mySql.update("ione","Cristiana!",20.3);
+        Scene scene= new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("resources/mainFrame.fxml")));
+        stage.setScene(scene);
         stage.show();
     }
 }

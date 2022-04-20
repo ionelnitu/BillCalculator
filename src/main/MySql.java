@@ -53,6 +53,16 @@ public class MySql {
         return false;
     }
 
+
+    public boolean verify(String name,String pass) throws SQLException {
+        Statement st= conn.createStatement();
+        st.executeQuery("select * from bill where user_name=\'"+name+"\' and password=\'"+pass+"\'");
+        ResultSet rs=st.getResultSet();
+        if(rs.next()){
+            return true;
+        }
+        return false;
+    }
 }
 
 
