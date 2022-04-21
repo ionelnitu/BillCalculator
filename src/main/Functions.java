@@ -6,8 +6,8 @@ public class Functions {
 
     }
 
-    public Double calculateGas(Double cubicMeter, Double pcs){
-        Double result=pcs*cubicMeter;
+    public Double calculateGas(Double cubicMeter, Double pcs, Double priceMc){
+        Double result=pcs*cubicMeter*priceMc;
         return result;
     }
 

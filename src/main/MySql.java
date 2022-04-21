@@ -1,6 +1,7 @@
 package main;
 
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
 import java.sql.*;
 
@@ -30,6 +31,16 @@ public class MySql {
         st.setString(3,email);
         return st.execute();
     }
+
+    public boolean insertGas(String pcs,String price) throws SQLException {
+        PreparedStatement st=conn.prepareStatement("insert into gasbill (pcs,price) values(?,?)");
+        st.setString(1,pcs);
+        st.setString(2,price);
+        return st.execute();
+
+    }
+
+   
 
     public Double select(String name, String pass) throws SQLException {
         Statement st = conn.createStatement();

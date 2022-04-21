@@ -5,9 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class MainClass extends Application {
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException {
         launch(args);
+
+
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Controller {
 
 
     @FXML
-    TextField emailTF, usernameTF, passwordTF, userNameMain;
+    TextField emailTF, usernameTF, passwordTF, userNameMain,pcs,priceKwh;
     @FXML
     PasswordField passwordMain;
 
@@ -67,6 +67,7 @@ public class Controller {
     private void create(ActionEvent actionEvent) throws IOException {
         try {
             mySql.insert(usernameTF.getText(), passwordTF.getText(), emailTF.getText());
+            mySql.insertGas(pcs.getText(),priceKwh.getText());
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("resources/mainFrame.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
