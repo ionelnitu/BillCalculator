@@ -19,7 +19,7 @@ public class Controller {
 
 
     @FXML
-    TextField emailTF, usernameTF, passwordTF, userNameMain,pcs,priceKwh;
+    TextField emailTF, usernameTF, passwordTF, userNameMain,pcs,priceKwh,oldIndexTF,newIndexTF,priceElecTF,oldIndexElTF,newIndexElTF;
     @FXML
     PasswordField passwordMain;
 
@@ -43,10 +43,11 @@ public class Controller {
 
     @FXML
     private void logIn(ActionEvent actionEvent) throws SQLException, IOException {
+        Person person=new Person(userNameMain.getText(),passwordMain.getText());
         Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("resources/loginFrame.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        if (mySql.verify(userNameMain.getText(), passwordMain.getText())) {
+        if (mySql.verify(person.getEmail(),person.getPassword())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("LogIn Successfully!");
             alert.setHeaderText(null);
@@ -67,7 +68,8 @@ public class Controller {
     private void create(ActionEvent actionEvent) throws IOException {
         try {
             mySql.insert(usernameTF.getText(), passwordTF.getText(), emailTF.getText());
-            mySql.insertGas(pcs.getText(),priceKwh.getText());
+            mySql.insertGas(pcs.getText(),priceKwh.getText(),Double.parseDouble(oldIndexTF.getText()),Double.parseDouble(newIndexTF.getText()));
+            mySql.insertElectricity(Double.parseDouble(priceElecTF.getText()),Double.parseDouble(oldIndexElTF.getText()),Double.parseDouble(newIndexElTF.getText()));
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("resources/mainFrame.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -75,6 +77,7 @@ public class Controller {
             stage.show();
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please verify your data!");

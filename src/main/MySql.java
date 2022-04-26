@@ -32,15 +32,25 @@ public class MySql {
         return st.execute();
     }
 
-    public boolean insertGas(String pcs,String price) throws SQLException {
-        PreparedStatement st=conn.prepareStatement("insert into gasbill (pcs,price) values(?,?)");
+    public boolean insertGas(String pcs,String price,Double oldIndex,Double newIndex) throws SQLException {
+        PreparedStatement st=conn.prepareStatement("insert into gasbill (pcs,price,new_index,old_index) values(?,?,?,?)");
         st.setString(1,pcs);
         st.setString(2,price);
+        st.setDouble(3,newIndex);
+        st.setDouble(4,oldIndex);
         return st.execute();
-
     }
 
-   
+    public boolean insertElectricity(Double price,Double oldIndex,Double newIndex) throws SQLException {
+        PreparedStatement st=conn.prepareStatement("insert into electricitybill (price,old_index,new_index) values(?,?,?)");
+        st.setDouble(1,price);
+        st.setDouble(2,oldIndex);
+        st.setDouble(3,newIndex);
+        return st.execute();
+    }
+
+
+
 
     public Double select(String name, String pass) throws SQLException {
         Statement st = conn.createStatement();
@@ -61,9 +71,9 @@ public class MySql {
     }
 
 
-    public boolean verify(String name,String pass) throws SQLException {
+    public boolean verify(String email,String pass) throws SQLException {
         Statement st= conn.createStatement();
-        st.executeQuery("select * from bill where user_name=\'"+name+"\' and password=\'"+pass+"\'");
+        st.executeQuery("select * from bill where email=\'"+email+"\' and password=\'"+pass+"\'");
         ResultSet rs=st.getResultSet();
         if(rs.next()){
             return true;

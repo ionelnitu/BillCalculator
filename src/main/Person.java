@@ -2,6 +2,7 @@ package main;
 
 public class Person {
     private String user_name;
+    private String email;
     private String password;
     private Double oldIndex;
     private Double newIndex;
@@ -10,11 +11,9 @@ public class Person {
 
     }
 
-    public Person(String user_name, String password, Double oldIndex, Double newIndex) {
-        this.user_name = user_name;
+    public Person(String email, String password) {
+        this.email=email;
         this.password = password;
-        this.oldIndex = oldIndex;
-        this.newIndex = newIndex;
     }
 
     public String getUser_name() {
@@ -47,5 +46,13 @@ public class Person {
 
     public void setNewIndex(Double newIndex) {
         this.newIndex = newIndex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
