@@ -6,10 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.sql.SQLException;
-
 public class MainClass extends Application {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         launch(args);
 
 
