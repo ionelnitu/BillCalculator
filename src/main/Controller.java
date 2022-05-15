@@ -19,8 +19,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Controller {
-    static MySql mySql = new MySql();
+public class Controller extends MySql{
 
 
     @FXML
@@ -55,7 +54,7 @@ public class Controller {
         Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("resources/loginFrame.fxml"));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        if (mySql.verify(person.getEmail(),person.getPassword())) {
+        if (verify(person.getEmail(),person.getPassword())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("LogIn Successfully!");
             alert.setHeaderText(null);
@@ -75,9 +74,9 @@ public class Controller {
     @FXML
     private void create(ActionEvent actionEvent) throws IOException {
         try {
-            mySql.insert(usernameTF.getText(), passwordTF.getText(), emailTF.getText());
-            mySql.insertGas(pcs.getText(),priceKwh.getText(),Double.parseDouble(oldIndexTF.getText()),Double.parseDouble(newIndexTF.getText()));
-            mySql.insertElectricity(Double.parseDouble(priceElecTF.getText()),Double.parseDouble(oldIndexElTF.getText()),Double.parseDouble(newIndexElTF.getText()));
+            insert(usernameTF.getText(), passwordTF.getText(), emailTF.getText());
+            insertGas(pcs.getText(),priceKwh.getText(),Double.parseDouble(oldIndexTF.getText()),Double.parseDouble(newIndexTF.getText()));
+            insertElectricity(Double.parseDouble(priceElecTF.getText()),Double.parseDouble(oldIndexElTF.getText()),Double.parseDouble(newIndexElTF.getText()));
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("resources/mainFrame.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
