@@ -2,8 +2,8 @@ package main;
 
 public interface Functions {
 
-    static void calculateElectricity(){
-
+    static Double calculateElectricity(Double index, Double pcs){
+        return index*pcs;
     }
 
     static Double calculateGas(Double cubicMeter, Double pcs, Double priceMc){
