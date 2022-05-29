@@ -3,7 +3,8 @@ package main;
 public interface Functions {
 
     static Double calculateElectricity(Double index, Double pcs){
-        return index*pcs;
+        Double result=index*pcs;
+        return result;
     }
 
     static Double calculateGas(Double cubicMeter, Double pcs, Double priceMc){
